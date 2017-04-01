@@ -19,5 +19,10 @@
     "files": [
       "src/registration.php"
     ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Stroopwafel\\Sysconfsearch\\Tests\\": "tests/unit/"
+    }
   }
 }

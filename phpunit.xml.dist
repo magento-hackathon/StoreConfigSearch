@@ -6,8 +6,8 @@
          bootstrap="vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="Stroopwafel_Sysconf">
-            <directory>./tests/</directory>
+        <testsuite name="Stroopwafel_Sysconfsearch">
+            <directory>./tests/unit/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
