@@ -1,0 +1,16 @@
+{
+  "name": "stroopwafel/sysconfsearch",
+  "description": "Easily find options in the System Configuration throug search",
+  "type": "library",
+  "version": "0.1.0",
+  "license": [
+    "MIT"
+  ],
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Stroopwafel\\Sysconfsearch\\": "src"
+    }
+  }
+}
