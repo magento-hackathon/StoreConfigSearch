@@ -1,5 +1,7 @@
 <?php
 
-use \Magento\Framework\Component\ComponentRegistrar;
-
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Stroopwafel_Sysconfsearch', __DIR__);
+\Magento\Framework\Component\ComponentRegistrar::register(
+    \Magento\Framework\Component\ComponentRegistrar::MODULE,
+    'Stroopwafel_Sysconfsearch',
+    __DIR__
+);

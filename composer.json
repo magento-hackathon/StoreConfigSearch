@@ -1,6 +1,6 @@
 {
   "name": "stroopwafel/sysconfsearch",
-  "description": "Easily find options in the System Configuration throug search",
+  "description": "Easily search for system configuration option.",
   "type": "library",
   "version": "0.1.0",
   "license": [
