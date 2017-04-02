@@ -6,31 +6,27 @@ class Search
 {
 
     /**
-     * @var \Magento\Config\Model\Config\Structure
-     */
-    protected $structure;
-
-    /**
      * @var \Magento\Config\Model\Config\Structure\Data
      */
-    protected $data;
+    protected $structureData;
 
 
     public function __construct(
         \Magento\Config\Model\Config\Structure\Data $structureData
     )
     {
-        $this->structureDate = $structureData;
+        $this->structureData = $structureData;
     }
 
 
     public function byKeyword($keyword)
     {
-        $parser = new ParseConfig($this->structureDate->get());
+        $parser = new ParseConfig($this->structureData->get());
 
         $labels = $parser->getAllLabels();
 
-var_dump($labels);exit;
-        //return $config;
+        array_filter($labels, function($field) use ($keyword) {
+            return (bool)preg_match("/{$keyword}/i", $field['label']);
+        });
     }
 }

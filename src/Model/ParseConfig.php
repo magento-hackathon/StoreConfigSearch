@@ -51,7 +51,10 @@ class ParseConfig
     public function exploreSectionChildren($field)
     {
         if (isset($field['label'])) {
-            $this->labels[] = $field['label'];
+            $this->labels[] = [
+                'label' => $field['label'],
+                'activity_path' => $field['activity_path']
+            ];
         }
     }
 }
