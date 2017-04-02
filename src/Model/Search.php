@@ -2,6 +2,11 @@
 
 namespace Stroopwafel\StoreConfigSearch\Model;
 
+/**
+ * Search the store config for keywords.
+ *
+ * @package Stroopwafel\StoreConfigSearch\Model
+ */
 class Search
 {
 
@@ -19,6 +24,11 @@ class Search
     }
 
 
+    /**
+     * Search the config for the given keyword.
+     *
+     * @param String $keyword
+     */
     public function byKeyword($keyword)
     {
         $parser = new ParseConfig($this->structureData->get());

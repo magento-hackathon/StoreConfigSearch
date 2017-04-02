@@ -2,8 +2,15 @@
 
 namespace Stroopwafel\StoreConfigSearch\Model;
 
+
+/**
+ * Parses the currently loaded config for labels.
+ *
+ * @package Stroopwafel\StoreConfigSearch\Model
+ */
 class ParseConfig
 {
+
     /**
      * @var array
      */
@@ -14,8 +21,10 @@ class ParseConfig
      */
     protected $labels;
 
+
     /**
      * ParseConfig constructor.
+     *
      * @param array $config
      */
     public function __construct(
@@ -26,13 +35,17 @@ class ParseConfig
     }
 
 
+    /**
+     * Get all the labels in the currently loaded config.
+     * @return array
+     */
     public function getAllLabels()
     {
         if (!$this->labels) {
             $this->labels = [];
 
             if (isset($this->config['sections'])) {
-                array_map([$this, 'exploreSection'], $this->config['sections']);
+                array_map([$this, 'walkSection'], $this->config['sections']);
             }
         }
 
@@ -40,23 +53,31 @@ class ParseConfig
     }
 
 
-    public function exploreSection($section)
+    /**
+     * Walk the given section array to get children.
+     * @param array $section
+     */
+    public function walkSection($section)
     {
         if (isset($section['children'])) {
-            array_map([$this, 'exploreTab'], $section['children']);
+            array_map([$this, 'walkTab'], $section['children']);
         }
     }
 
 
-    public function exploreTab($tab)
+    public function walkTab($tab)
     {
         if (isset($tab['children'])) {
-            array_map([$this, 'exploreSectionChildren'], $tab['children']);
+            array_map([$this, 'walkSectionChildren'], $tab['children']);
         }
     }
 
 
-    public function exploreSectionChildren($field)
+    /**
+     * Walk the given array.
+     * @param $field
+     */
+    public function walkSectionChildren($field)
     {
         if (isset($field['label'])) {
             $this->labels[] = [
