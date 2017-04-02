@@ -44,7 +44,7 @@ class Results extends \Magento\Framework\App\Action\Action
         $searchTerms = $this->getRequest()->getParam('search_terms');
 
         $results = $this->search->byKeyword($searchTerms);
-var_dump($results);exit;
+
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         return $resultJson->setData($results);
