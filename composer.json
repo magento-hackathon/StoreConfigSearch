@@ -14,15 +14,11 @@
   },
   "autoload": {
     "psr-4": {
-      "Stroopwafel\\StoreConfigSearch\\": "src"
+      "Stroopwafel\\StoreConfigSearch\\": "src",
+      "Stroopwafel\\StoreConfigSearchTests\\": "tests/unit"
     },
     "files": [
       "src/registration.php"
     ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Stroopwafel\\StoreConfigSearch\\Tests\\": "tests/unit"
-    }
   }
 }

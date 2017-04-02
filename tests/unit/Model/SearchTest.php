@@ -1,9 +1,9 @@
 <?php
 
-namespace Stroopwafel\StoreConfigSearch\Tests\Model;
+namespace Stroopwafel\StoreConfigSearchTests\Model;
 
 use Stroopwafel\StoreConfigSearch\Model\Search;
-use Stroopwafel\StoreConfigSearch\Tests\Mock\StructuredData;
+use Stroopwafel\StoreConfigSearchTests\Mock\StructuredData;
 
 /**
  * @covers Search
@@ -25,7 +25,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->dataMock->method('get')
-            ->willReturn(StructuredData::get());
+            ->willReturn(StructuredData::provideData());
     }
 
     /**

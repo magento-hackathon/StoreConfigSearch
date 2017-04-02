@@ -1,6 +1,6 @@
 <?php
 
-namespace Stroopwafel\StoreConfigSearch\Tests\Mock;
+namespace Stroopwafel\StoreConfigSearchTests\Mock;
 
 class StructuredData
 {
@@ -8,7 +8,7 @@ class StructuredData
      * returns an array with a snippet of store configuration data
      * @return array
      */
-    public static function get()
+    public static function provideData()
     {
         return [
             'sections' => [

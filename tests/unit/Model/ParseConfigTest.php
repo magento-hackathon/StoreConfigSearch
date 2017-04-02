@@ -1,9 +1,9 @@
 <?php
 
-namespace Stroopwafel\StoreConfigSearch\Tests\Model;
+namespace Stroopwafel\StoreConfigSearchTests\Model;
 
 use Stroopwafel\StoreConfigSearch\Model\ParseConfig;
-use Stroopwafel\StoreConfigSearch\Tests\Mock\StructuredData;
+use Stroopwafel\StoreConfigSearchTests\Mock\StructuredData;
 
 /**
  * @covers ParseConfig
@@ -18,7 +18,7 @@ class ParseConfigTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->parseConfig = new ParseConfig(StructuredData::get());
+        $this->parseConfig = new ParseConfig(StructuredData::provideData());
     }
 
     /**
