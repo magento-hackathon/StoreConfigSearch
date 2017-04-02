@@ -1,0 +1,24 @@
+{
+  "name": "stroopwafel/storeconfigsearch",
+  "description": "Easily search for store configuration options.",
+  "type": "library",
+  "version": "0.1.0",
+  "license": [
+    "MIT"
+  ],
+  "require": {
+    "magento/module-backend": "^100.0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stroopwafel\\StoreConfigSearch\\": "src",
+      "Stroopwafel\\StoreConfigSearchTests\\": "tests/unit"
+    },
+    "files": [
+      "src/registration.php"
+    ]
+  }
+}
