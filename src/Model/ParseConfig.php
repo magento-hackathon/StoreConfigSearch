@@ -43,7 +43,15 @@ class ParseConfig
     public function exploreSection($section)
     {
         if (isset($section['children'])) {
-            array_map([$this, 'exploreSectionChildren'], $section['children']);
+            array_map([$this, 'exploreTab'], $section['children']);
+        }
+    }
+
+
+    public function exploreTab($tab)
+    {
+        if (isset($tab['children'])) {
+            array_map([$this, 'exploreSectionChildren'], $tab['children']);
         }
     }
 
