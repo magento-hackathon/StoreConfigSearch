@@ -2,35 +2,40 @@
 
 namespace Stroopwafel\StoreConfigSearch\Model;
 
+/**
+ * Search the store config for keywords.
+ *
+ * @package Stroopwafel\StoreConfigSearch\Model
+ */
 class Search
 {
 
     /**
-     * @var \Magento\Config\Model\Config\Structure
-     */
-    protected $structure;
-
-    /**
      * @var \Magento\Config\Model\Config\Structure\Data
      */
-    protected $data;
+    protected $structureData;
 
 
     public function __construct(
         \Magento\Config\Model\Config\Structure\Data $structureData
     )
     {
-        $this->structureDate = $structureData;
+        $this->structureData = $structureData;
     }
 
 
+    /**
+     * Search the config for the given keyword.
+     *
+     * @param String $keyword
+     */
     public function byKeyword($keyword)
     {
-        $parser = new ParseConfig($this->structureDate->get());
-
+        $parser = new ParseConfig($this->structureData->get());
         $labels = $parser->getAllLabels();
 
-var_dump($labels);exit;
-        //return $config;
+        array_filter($labels, function ($value) use ($keyword) {
+            return (bool)preg_match("/{$keyword}/i", $value);
+        });
     }
 }
