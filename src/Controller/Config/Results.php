@@ -11,6 +11,7 @@ namespace Stroopwafel\StoreConfigSearch\Controller\Config;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\Controller\ResultFactory;
 
 class Results extends \Magento\Framework\App\Action\Action
 {
@@ -40,9 +41,12 @@ class Results extends \Magento\Framework\App\Action\Action
         // into the admin
         \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Config\ScopeInterface::class)->setCurrentScope('adminhtml');
 
-        $searchTerms = $this->getRequest()->getPost('search_terms');
+        $searchTerms = $this->getRequest()->getParam('search_terms');
+
         $results = $this->search->byKeyword($searchTerms);
-        var_dump($results);
-        //return $results;
+var_dump($results);exit;
+        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+
+        return $resultJson->setData($results);
     }
 }

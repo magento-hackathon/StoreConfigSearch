@@ -28,6 +28,7 @@ class Search
      * Search the config for the given keyword.
      *
      * @param String $keyword
+     * @return array
      */
     public function byKeyword($keyword)
     {
@@ -35,7 +36,7 @@ class Search
 
         $labels = $parser->getAllLabels();
 
-        array_filter($labels, function($field) use ($keyword) {
+        return array_filter($labels, function($field) use ($keyword) {
             return (bool)preg_match("/{$keyword}/i", $field['label']);
         });
     }

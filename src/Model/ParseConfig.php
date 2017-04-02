@@ -79,10 +79,10 @@ class ParseConfig
      */
     public function walkSectionChildren($field)
     {
-        if (isset($field['label'])) {
+        if (isset($field['label'], $field['path'])) {
             $this->labels[] = [
                 'label' => $field['label'],
-                'activity_path' => $field['activity_path']
+                'activity_path' => $field['path']
             ];
         }
     }
