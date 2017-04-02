@@ -26,9 +26,7 @@ class Search
 
     public function byKeyword($keyword)
     {
-        $config = $this->structureDate->get();
-
-        $parser = new ParseConfig($config);
+        $parser = new ParseConfig($this->structureDate->get());
 
         $labels = $parser->getAllLabels();
 
