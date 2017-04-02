@@ -11,7 +11,6 @@ namespace Stroopwafel\StoreConfigSearch\Controller\Config;
 
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\ObjectManager\ObjectManager;
 
 class Results extends \Magento\Framework\App\Action\Action
 {
