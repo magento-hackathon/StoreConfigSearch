@@ -22,7 +22,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Stroopwafel\\StoreConfigSearch\\Tests\\": "tests/unit/"
+      "Stroopwafel\\StoreConfigSearch\\Tests\\": "tests/unit"
     }
   }
 }

@@ -21,6 +21,11 @@ class ParseConfig
      */
     protected $labels;
 
+    /**
+     * @var string
+     */
+    protected $tabLabel;
+
 
     /**
      * ParseConfig constructor.
@@ -46,6 +51,9 @@ class ParseConfig
 
             if (isset($this->config['sections'])) {
                 array_map([$this, 'walkSection'], $this->config['sections']);
+                $this->labels = array_filter($this->labels, function($value) {
+                    return null!==$value;
+                });
             }
         }
 
@@ -65,10 +73,18 @@ class ParseConfig
     }
 
 
+    /**
+     * Walk the given section array to get children.
+     * @param $tab
+     * @return array
+     */
     public function walkTab($tab)
     {
+        if (isset($tab['label'])) {
+            $this->tabLabel = $tab['label'];
+        }
         if (isset($tab['children'])) {
-            array_map([$this, 'walkSectionChildren'], $tab['children']);
+            $this->labels = array_merge($this->labels, array_map([$this, 'walkSectionChildren'], $tab['children']));
         }
     }
 
@@ -76,13 +92,15 @@ class ParseConfig
     /**
      * Walk the given array.
      * @param $field
+     * @return array
      */
     public function walkSectionChildren($field)
     {
         if (isset($field['label'], $field['path'])) {
-            $this->labels[] = [
+            return [
                 'label' => $field['label'],
-                'activity_path' => $field['path']
+                'path' => $field['path'],
+                'tab' => $this->tabLabel
             ];
         }
     }
