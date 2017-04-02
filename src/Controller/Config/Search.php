@@ -6,7 +6,7 @@
  * Time: 2:13 PM
  */
 
-namespace Stroopwafel\Sysconfsearch\Controller\Config;
+namespace Stroopwafel\StoreConfigSearch\Controller\Config;
 
 
 use Magento\Framework\Controller\ResultFactory;

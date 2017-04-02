@@ -1,6 +1,6 @@
 {
-  "name": "stroopwafel/sysconfsearch",
-  "description": "Easily search for system configuration option.",
+  "name": "stroopwafel/storeconfigsearch",
+  "description": "Easily search for store configuration options.",
   "type": "library",
   "version": "0.1.0",
   "license": [
@@ -14,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Stroopwafel\\Sysconfsearch\\": "src"
+      "Stroopwafel\\StoreConfigSearch\\": "src"
     },
     "files": [
       "src/registration.php"
@@ -22,7 +22,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Stroopwafel\\Sysconfsearch\\Tests\\": "tests/unit/"
+      "Stroopwafel\\StoreConfigSearch\\Tests\\": "tests/unit/"
     }
   }
 }

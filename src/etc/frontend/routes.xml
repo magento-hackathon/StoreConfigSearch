@@ -4,7 +4,7 @@
 
     <router id="standard">
         <route id="stroopwafel" frontName="stroopwafel">
-            <module name="Stroopwafel_Sysconfsearch"/>
+            <module name="Stroopwafel_StoreConfigSearch"/>
         </route>
     </router>
 </config>

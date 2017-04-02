@@ -2,6 +2,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Stroopwafel_Sysconfsearch',
+    'Stroopwafel_StoreConfigSearch',
     __DIR__
 );

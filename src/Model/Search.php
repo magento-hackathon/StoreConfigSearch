@@ -1,6 +1,6 @@
 <?php
 
-namespace Stroopwafel\Sysconfsearch\Model;
+namespace Stroopwafel\StoreConfigSearch\Model;
 
 class Search
 {

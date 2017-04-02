@@ -7,9 +7,9 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="Stroopwafel\Sysconfsearch\Block\Search"
+            <block class="Stroopwafel\StoreConfigSearch\Block\Search"
                    name="sysconfig.search"
-                   template="Stroopwafel_Sysconfsearch::search.phtml">
+                   template="Stroopwafel_StoreConfigSearch::search.phtml">
             </block>
         </referenceContainer>
     </body>

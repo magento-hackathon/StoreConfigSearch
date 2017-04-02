@@ -6,7 +6,7 @@
  * Time: 3:13 PM
  */
 
-namespace Stroopwafel\Sysconfsearch\Block;
+namespace Stroopwafel\StoreConfigSearch\Block;
 
 
 use Magento\Framework\Registry;

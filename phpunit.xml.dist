@@ -6,7 +6,7 @@
          bootstrap="vendor/autoload.php">
 
     <testsuites>
-        <testsuite name="Stroopwafel_Sysconfsearch">
+        <testsuite name="Stroopwafel_StoreConfigSearch">
             <directory>./tests/unit/</directory>
         </testsuite>
     </testsuites>

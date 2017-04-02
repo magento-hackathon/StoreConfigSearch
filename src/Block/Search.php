@@ -6,7 +6,7 @@
  * Time: 1:44 PM
  */
 
-namespace Stroopwafel\Sysconfsearch\Block;
+namespace Stroopwafel\StoreConfigSearch\Block;
 
 
 use Magento\Framework\UrlInterface;

@@ -6,7 +6,7 @@
  * Time: 2:20 PM
  */
 
-namespace Stroopwafel\Sysconfsearch\Controller\Config;
+namespace Stroopwafel\StoreConfigSearch\Controller\Config;
 
 
 use Magento\Framework\App\Action\Context;
@@ -22,7 +22,7 @@ class Results extends \Magento\Framework\App\Action\Action
     private $search;
 
 
-    public function __construct(Context $context, \Stroopwafel\Sysconfsearch\Model\Search $search)
+    public function __construct(Context $context, \Stroopwafel\StoreConfigSearch\Model\Search $search)
     {
         parent::__construct($context);
         $this->search = $search;
