@@ -1,11 +1,9 @@
 <?php
 /**
- * Copyright © 2015 Inchoo d.o.o.
- * created by Zoran Salamun(zoran.salamun@inchoo.net)
+ *
  */
 namespace Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Config;
 
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
 
@@ -18,7 +16,9 @@ class Results extends \Magento\Backend\App\Action
     private $search;
 
 
-    public function __construct(Context $context, \Stroopwafel\StoreConfigSearch\Model\Search $search)
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Stroopwafel\StoreConfigSearch\Model\Search $search)
     {
         parent::__construct($context);
         $this->search = $search;
@@ -40,5 +40,14 @@ class Results extends \Magento\Backend\App\Action
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         return $resultJson->setData($results);
+    }
+
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return true;//$this->_authorization->isAllowed('Magento_Sales::sales_order');
     }
 }
