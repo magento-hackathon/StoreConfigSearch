@@ -4,7 +4,7 @@
 
     <router id="admin">
         <route id="stroopwafel" frontName="stroopwafel">
-            <module name="Stroopwafel_StoreConfigSearch" before="Magento_Backend"/>
+            <module name="Stroopwafel_StoreConfigSearch" />
         </route>
     </router>
 </config>
