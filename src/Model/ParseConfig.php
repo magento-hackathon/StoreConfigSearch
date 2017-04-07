@@ -74,7 +74,7 @@ class ParseConfig
 
 
     /**
-     * Walk the given section array to get children.
+     * Walk the given tab array to get children.
      * @param $tab
      * @return array
      */
@@ -90,7 +90,7 @@ class ParseConfig
 
 
     /**
-     * Walk the given array.
+     * Walk the given section children array.
      * @param $field
      * @return array
      */

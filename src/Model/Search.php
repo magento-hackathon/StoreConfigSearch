@@ -33,11 +33,14 @@ class Search
     public function byKeyword($keyword)
     {
         $parser = new ParseConfig($this->structureData->get());
-
         $labels = $parser->getAllLabels();
-
-        return array_filter($labels, function($field) use ($keyword) {
+        $return = array_filter($labels, function ($field) use ($keyword) {
             return (bool)preg_match("/{$keyword}/i", $field['label']);
         });
+
+        return $return;
+//        return array_filter($labels, function($field) use ($keyword) {
+//            return (bool)preg_match("/{$keyword}/i", $field['label']);
+//        });
     }
 }

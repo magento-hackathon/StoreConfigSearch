@@ -38,8 +38,9 @@ class Results extends \Magento\Backend\App\Action
         $results = $this->search->byKeyword($searchTerms);
 
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+        $resultJson->setData($results);
 
-        return $resultJson->setData($results);
+        return $resultJson;
     }
 
 

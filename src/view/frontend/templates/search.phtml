@@ -4,14 +4,30 @@
             <fieldset class="fieldset create info">
                 <div class="field required">
                     <label class="label" for="search_terms">Search For:</label>
-                    <input type="text" name="search_terms" id="search_terms" class="input-text required-entry" />
+                    <input type="text" name="search_terms" id="search_terms" class="input-text required-entry"/>
                 </div>
             </fieldset>
             <div class="actions-toolbar">
                 <div class="primary">
-                    <button type="submit" class="action submit primary" title="Submit"><span>Search</span></button>
+                    <button type="submit" id="search_submit" class="action submit primary" title="Submit">
+                        <span>Search</span>
+                    </button>
                 </div>
             </div>
         </form>
+        <div id="search_results">
+            <h3>Results</h3>
+        </div>
     </div>
 </div>
+
+
+<script>
+    require(
+        ['jquery', 'Stroopwafel_StoreConfigSearch/js/autocomplete'],
+        function ($, autocomplete) {
+            var ajaxurl = '<?php echo $block->getUrl('*/config/results') ?>';
+            autocomplete.autocompleteData(ajaxurl);
+
+        });
+</script>
