@@ -34,10 +34,15 @@ class Search
     {
         $parser = new ParseConfig($this->structureData->get());
         $labels = $parser->getAllLabels();
-        $return = array_filter($labels, function ($field) use ($keyword) {
+
+        $sections = array_filter($labels, function ($field) use ($keyword) {
             return (bool)preg_match("/{$keyword}/i", $field['label']);
         });
 
-        return $return;
+        $tabs = array_filter($labels, function ($field) use ($keyword) {
+            return (bool)preg_match("/{$keyword}/i", $field['tab']);
+        });
+
+        return array_merge($sections, $tabs);
     }
 }
