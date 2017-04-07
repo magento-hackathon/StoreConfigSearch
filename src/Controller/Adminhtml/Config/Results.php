@@ -34,13 +34,15 @@ class Results extends \Magento\Backend\App\Action
     public function execute()
     {
         $searchTerms = $this->getRequest()->getParam('search_terms');
-
-        $results = $this->search->byKeyword($searchTerms);
-
+        $searchResults = $this->search->byKeyword($searchTerms);
+        $results = array(
+            'success' => true,
+            'num_results' => count($searchResults),
+            'data' => $searchResults
+        );
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData($results);
 
-        return $resultJson;
+        return $resultJson->setData($results);
     }
 
 

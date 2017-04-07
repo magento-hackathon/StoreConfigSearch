@@ -39,8 +39,5 @@ class Search
         });
 
         return $return;
-//        return array_filter($labels, function($field) use ($keyword) {
-//            return (bool)preg_match("/{$keyword}/i", $field['label']);
-//        });
     }
 }

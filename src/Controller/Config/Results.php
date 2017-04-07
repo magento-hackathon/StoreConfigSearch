@@ -42,9 +42,11 @@ class Results extends \Magento\Framework\App\Action\Action
         \Magento\Framework\App\ObjectManager::getInstance()->get(\Magento\Framework\Config\ScopeInterface::class)->setCurrentScope('adminhtml');
 
         $searchTerms = $this->getRequest()->getParam('search_terms');
-
-        $results = $this->search->byKeyword($searchTerms);
-
+        $searchResults = $this->search->byKeyword($searchTerms);
+        $results = array(
+            'num_results' => count($searchResults),
+            'data' => $searchResults
+        );
         $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
 
         return $resultJson->setData($results);
