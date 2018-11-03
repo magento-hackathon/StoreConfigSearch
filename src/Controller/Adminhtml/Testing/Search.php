@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
+
 /**
- * @package Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Testing
  * @author Laura Folco <me@laurafolco.com>
- * @copyright Copyright (c) 2018 LauraFolco.com
- * @license http://opensource.org/licenses/afl-3.0.php Academic Free License (AFL 3.0)
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
  */
 
 namespace Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Testing;

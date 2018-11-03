@@ -1,6 +1,10 @@
 <?php
+declare(strict_types=1);
+
 /**
- *
+ * @author Laura Folco <me@laurafolco.com>
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
  */
 
 namespace Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Config;
@@ -9,6 +13,11 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Stroopwafel\StoreConfigSearch\Model\Search;
 
+/**
+ * Ajax results for store config search.
+ *
+ * @package Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Config
+ */
 class Results extends \Magento\Backend\App\Action
 {
 
@@ -26,6 +35,7 @@ class Results extends \Magento\Backend\App\Action
 
     // TODO: remove after testing
     protected $_publicActions = ['results'];
+
 
     public function __construct(
         Context $context,

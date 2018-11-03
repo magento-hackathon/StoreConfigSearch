@@ -1,45 +1,89 @@
 <?php
+declare(strict_types=1);
 
-namespace Stroopwafel\StoreConfigSearchTests\Model;
+/**
+ * @author Laura Folco <me@laurafolco.com>
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
+ */
 
-use Stroopwafel\StoreConfigSearch\Model\Search;
-use Stroopwafel\StoreConfigSearchTests\Mock\StructuredData;
+namespace Stroopwafel\StoreConfigSearch\Model;
+
 
 /**
  * @covers Search
  */
-class SearchTest extends \PHPUnit_Framework_TestCase
+class SearchTest extends \PHPUnit\Framework\TestCase
 {
 
-    /**
-     * @var \Magento\Config\Model\Config\Structure\Data
-     */
-    protected $dataMock;
+
+    /** @var ParseConfig */
+    private $parseConfig;
+
+    /** @var \Magento\Config\Model\Config\Structure\Data */
+    private $structureDataMock;
+
+    /** @var \Magento\Backend\Model\Url */
+    private $urlModelMock;
+
 
     protected function setUp()
     {
-        $this->dataMock = $this->getMockBuilder(\Magento\Config\Model\Config\Structure\Data::class)
+        $this->urlModelMock = $this->getMockBuilder(\Magento\Backend\Model\Url::class)
             ->disableOriginalConstructor()
             ->disableOriginalClone()
-            ->disableArgumentCloning()
             ->getMock();
 
-        $this->dataMock->method('get')
-            ->willReturn(StructuredData::provideData());
+//        $structureData           = require dirname(__DIR__) . '/_files/structured_data.php';
+//        $this->structureDataMock = $this->getMockBuilder(\Magento\Config\Model\Config\Structure\Data::class)
+//            ->disableOriginalConstructor()
+//            ->getMock();
+//        $this->structureDataMock->expects(static::once())
+//            ->method('get')
+//            ->willReturn($structureData['config']['system']);
+//        $this->structureDataMock->merge($structureData);
+
+        $this->parseConfig = $this->getMockBuilder(\Stroopwafel\StoreConfigSearch\Model\ParseConfig::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+        $parsedData           = require dirname(__DIR__) . '/_files/parsed_data.php';
+        $this->parseConfig->expects(static::once())
+            ->method('getParsedData')
+            ->willReturn($parsedData);
     }
+
+
+    protected function tearDown()
+    {
+        unset($this->structureDataMock);
+        unset($this->parseConfig);
+        unset($this->urlModelMock);
+    }
+
+
+    protected function setupSearch()
+    {
+        $model = new \Stroopwafel\StoreConfigSearch\Model\Search(
+            $this->parseConfig,
+            $this->urlModelMock
+        );
+        return $model;
+    }
+
 
     /**
      * @var Search::byKeyword
      */
     public function testByKeyword()
     {
-        $search = new Search($this->dataMock);
-        $hits = $search->byKeyword('city');
+        $search = $this->setupSearch();
+        $hits   = $search->byKeyword('Field 2');
+        $result = $hits[0];
 
-        $this->assertEquals(['city' => [
+        static::assertEquals(['Field 2' => [
             'label' => 'City',
-            'path' => 'general/store_information',
-            'tab' => 'Store Information'
+            'path'  => 'general/store_information',
+            'tab'   => 'Store Information'
         ]], $hits);
     }
 }

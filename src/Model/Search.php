@@ -1,4 +1,11 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * @author Laura Folco <me@laurafolco.com>
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
+ */
 
 namespace Stroopwafel\StoreConfigSearch\Model;
 
@@ -13,41 +20,38 @@ class Search
 {
 
     /**
-     * @var ParseConfig
-     */
-    private $parseConfig;
-
-    /**
      * @var AdminUrl
      */
     private $url;
+
+    /** @var array */
+    private $parseConfigData;
 
 
     /**
      * Search constructor.
      *
-     * @param ParseConfigFactory $parseConfigFactory
+     * @param ParseConfig $parseConfig
      * @param AdminUrl $url
      */
     public function __construct(
-        ParseConfigFactory $parseConfigFactory,
+        ParseConfig $parseConfig,
         AdminUrl $url
     )
     {
-        $this->parseConfig = $parseConfigFactory->create();
+        $this->parseConfigData = $parseConfig->getParsedData();
         $this->url         = $url;
     }
 
 
     public function byKeyword($keyword)
     {
-        $fields  = $this->parseConfig->getParsedData();
         $results = [];
 
-        foreach ($fields as $field) {
+        foreach ($this->parseConfigData as $field) {
             $label = $field['field_label'];
 
-            if ($this->_isMatch($keyword, $label) !== false) {
+            if ($this->isMatch($keyword, $label) !== false) {
                 $results[] = $this->buildUrl($field);
             }
         }
@@ -82,13 +86,13 @@ class Search
         $linkText = isset($field['field_comment']) ?
             sprintf('%s: %s', $field['field_label'], $field['field_comment']) :
             $field['field_label'];
-        $link = sprintf('<a href="%s">%s</a>', $url, $linkText);
+        $link     = sprintf('<a href="%s">%s</a>', $url, $linkText);
 
         return $link;
     }
 
 
-    private function _isMatch($needle, $haystack)
+    private function isMatch($needle, $haystack)
     {
         return preg_match("/\b{$needle}\b/i", $haystack) > 0;
     }
@@ -97,6 +101,7 @@ class Search
     /**
      * Search the config for the given keyword.
      *
+     * @deprecated
      * @param String $keyword
      * @return array
      */
@@ -156,4 +161,5 @@ class Search
 
         return $result;
     }
+
 }

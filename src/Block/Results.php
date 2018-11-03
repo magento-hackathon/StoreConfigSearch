@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
+
 /**
- * Created by PhpStorm.
- * User: lfolco
- * Date: 9/27/16
- * Time: 3:13 PM
+ * @author Laura Folco <me@laurafolco.com>
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
  */
 
 namespace Stroopwafel\StoreConfigSearch\Block;

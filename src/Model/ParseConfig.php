@@ -1,6 +1,13 @@
 <?php
+declare(strict_types=1);
 
 namespace Stroopwafel\StoreConfigSearch\Model;
+
+/**
+ * @author Laura Folco <me@laurafolco.com>
+ * @copyright Copyright (c) 2017 FireGento e.V.
+ * @license https://opensource.org/licenses/MIT MIT
+ */
 
 use Magento\Framework\DataObject;
 use Magento\Config\Model\Config\Structure\Data as StructureData;
@@ -121,6 +128,10 @@ class ParseConfig extends DataObject
     }
 
 
+    /**
+     * @param string $tabId
+     * @return string|null
+     */
     private function lookupTabLabel($tabId)
     {
         if (isset($this->config['tabs']) &&
@@ -134,6 +145,7 @@ class ParseConfig extends DataObject
     /**
      * Get all the labels in the currently loaded config.
      *
+     * @deprecated
      * @return array
      */
     public function getAllLabels()
@@ -156,6 +168,7 @@ class ParseConfig extends DataObject
     /**
      * Walk the given section array to get children.
      *
+     * @deprecated
      * @param array $section
      */
     private function walkSection($section)
@@ -168,6 +181,8 @@ class ParseConfig extends DataObject
 
     /**
      * Walk the given tab array to get children.
+     *
+     * @deprecated
      *
      * @param $tab
      * @return array
@@ -187,6 +202,8 @@ class ParseConfig extends DataObject
 
     /**
      * Walk the given section children array.
+     *
+     * @deprecated
      *
      * @param $field
      * @return array
