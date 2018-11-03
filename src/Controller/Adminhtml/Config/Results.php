@@ -2,55 +2,52 @@
 /**
  *
  */
+
 namespace Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Config;
 
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultFactory;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Controller\Result\JsonFactory;
+use Stroopwafel\StoreConfigSearch\Model\Search;
 
 class Results extends \Magento\Backend\App\Action
 {
 
+    const ADMIN_RESOURCE = 'Stroopwafel_StoreConfigSearch::search';
+
     /**
-     * @var \Stroopwafel\StoreConfigSearch\Model\Search
+     * @var Search
      */
     private $search;
 
+    /**
+     * @var JsonFactory
+     */
+    private $jsonFactory;
+
+    // TODO: remove after testing
+    protected $_publicActions = ['results'];
 
     public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Stroopwafel\StoreConfigSearch\Model\Search $search)
+        Context $context,
+        JsonFactory $jsonFactory,
+        Search $search)
     {
         parent::__construct($context);
-        $this->search = $search;
+        $this->search      = $search;
+        $this->jsonFactory = $jsonFactory;
     }
 
 
-    /**
-     * Dispatch request
-     *
-     * @return \Magento\Framework\Controller\ResultInterface|ResponseInterface
-     * @throws \Magento\Framework\Exception\NotFoundException
-     */
     public function execute()
     {
-        $searchTerms = $this->getRequest()->getParam('search_terms');
+        $searchTerms   = $this->getRequest()->getParam('search_terms');
         $searchResults = $this->search->byKeyword($searchTerms);
-        $results = array(
-            'success' => true,
+        $results       = [
+            'success'     => true,
             'num_results' => count($searchResults),
-            'data' => $searchResults
-        );
-        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
+            'data'        => $searchResults
+        ];
 
-        return $resultJson->setData($results);
-    }
-
-
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return true;//$this->_authorization->isAllowed('Magento_Sales::sales_order');
+        return $this->jsonFactory->create()->setData($results);
     }
 }

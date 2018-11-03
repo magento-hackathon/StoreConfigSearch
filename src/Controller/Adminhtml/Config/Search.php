@@ -11,8 +11,11 @@ namespace Stroopwafel\StoreConfigSearch\Controller\Adminhtml\Config;
 
 use Magento\Framework\Controller\ResultFactory;
 
-class Search extends \Magento\Framework\App\Action\Action
+class Search extends \Magento\Backend\App\Action
 {
+
+
+    const ADMIN_RESOURCE = 'Stroopwafel_StoreConfigSearch::search';
 
     public function execute()
     {
